@@ -26,7 +26,7 @@ def check_proxy(proxy):
 
         response = requests.get("http://www.google.com", proxies=proxies, timeout=10)
         if response.status_code == 200:
-            bot.send_message(chat_id= GROUP_ID, f"⊙ Status: Live ✅\n⊙ Proxy: {proxy}\n\nDev ~ @whytorrent⚡️")
+            bot.send_message(chat_id= GROUP_ID, "⊙ Status: Live ✅\n⊙ Proxy: {proxy}\n\nDev ~ @whytorrent⚡️")
             return f"⊙ Status: Live ✅\n⊙ Proxy: {proxy}\n\nDev ~ @whytorrent⚡️"
         else:
             return f"⊙ Status: Dead ❌\n⊙ Proxy: {proxy}\n\nDev ~ @whytorrent⚡️"
