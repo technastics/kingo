@@ -1,5 +1,5 @@
 import os
-os.system("pip instal telebot")
+os.system("pip install telebot")
 
 import requests
 from telegram import Update
