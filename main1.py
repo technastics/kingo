@@ -3,21 +3,16 @@ os.system("pip install python-telegram-bot==20.0")
 os.system("pip install requests==2.31.0")
 os.system("pip install telegram")
 
-import logging
 import requests
 from telegram import Update
 from telegram.ext import Application, CommandHandler, ContextTypes
-logging.basicConfig(
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-    level=logging.INFO
-)
-logger = logging.getLogger(name)
+
 GROUP_ID = -1002248642676
 
 def start(update: Update, context):
-  update.message.reply_text(
-    "I am proxy checker?"
-  )
+    update.message.reply_text(
+        "I am proxy checker?"
+    )
 
 def check_proxy(proxy):
     try:
@@ -54,15 +49,16 @@ async def check(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
             }
             requests.post(DISCORD_WEBHOOK_URL, json=discord_data)
     except ValueError:
-        pass
+        print("Error: Invalid proxy format. Please use the format ip:port:username:password")
 
 def main() -> None:
     application = Application.builder().token("7444500748:AAHh3JPgEChJo5QeG5w5IDZB7O1Ki1ZeJDk").build()
 
     application.add_handler(CommandHandler("check", check))
 
+    print("Bot is running...")
     application.run_polling()
     
 
-if name == 'main':
+if __name__ == '__main__':
     main()
