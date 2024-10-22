@@ -1,7 +1,4 @@
-import os
-os.system("pip install python-telegram-bot==20.0")
-os.system("pip install requests==2.31.0")
-os.system("pip install telegram")
+
 
 import requests
 from telegram import Update
@@ -25,7 +22,7 @@ def check_proxy(proxy):
 
         response = requests.get("http://www.google.com", proxies=proxies, timeout=10)
         if response.status_code == 200:
-            return f"⊙ Status: Live ✅\n⊙ Proxy: {proxy}\n\nDev ~ @whytorrent⚡️"
+            return f"⊙ Status: Live ✅\n⊙ Proxy: {proxy}\n\nDev ~ @whytorrent(L0DU)⚡️"
         else:
             return f"⊙ Status: Dead ❌\n⊙ Proxy: {proxy}\n\nDev ~ @whytorrent⚡️"
     except Exception as e:
